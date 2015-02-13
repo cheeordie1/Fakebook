@@ -1,0 +1,21 @@
+<table cellspacing="0">
+	<tr class="loginbar">
+	<% if session[:user_id] then %>
+	<td class="leftoff">
+		hello <%= User.find(session[:user_id])[:first_name] %>!
+	</td>
+	<td>
+		<%= button_to("Logout", logout_users_path, :method => "get") %>
+	</td>
+	<% else %>
+	<td class="leftoff">
+		<%= button_to("Login", login_users_path, method: "get") %>
+	</td>
+	<% end %>
+	<td>
+		<%= button_to("Register", new_user_path, :method => "get") %>
+	</td>
+	<td class="wide"><br /></td>
+	</tr>
+</table>
+<div><br /></div>

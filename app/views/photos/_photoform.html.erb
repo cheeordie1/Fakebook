@@ -1,0 +1,19 @@
+<%= form_for(@photo, {:method => "post"}) do |f| %>
+  <div class="leftoff wide relative">
+    <div>
+	    <%= f.file_field(:file_name, accept: 'image/png,image/gif,image/jpeg') %>
+    </div>
+    <%= f.submit() %>
+  </div>
+  <% if @photo.errors.any? %>
+    <div class="error" id="error_explanation">
+      <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this
+      photo from being uploaded:</h2>
+      <ul>
+      <% @photo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

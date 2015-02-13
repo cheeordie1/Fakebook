@@ -1,0 +1,20 @@
+<%= form_for([:photo, @comment], {:method => "post"}) do |f| %>
+	<%= hidden_field_tag(:photo_id, params[:photo_id]) %>
+	<%= hidden_field_tag(:user_id, session[:user_id]) %>
+	<%= hidden_field_tag(:date_time, DateTime.now) %>
+  <p class="center">
+	<%= text_area_tag(:comment, nil, size: "72x8") %>
+	<%= submit_tag("Post") %>
+  </p>
+  <% if @comment.errors.any? then %>
+    <div class="error" id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this
+      comment from being saved:</h2>
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

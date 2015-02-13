@@ -1,0 +1,13 @@
+<script type="text/javascript" src="<%=javascript_path("searchbar.js")%>" ></script>
+
+<div class="relative center">
+  <input type="text" id="searchbar" class="searchbar" placeholder="Search for a Photo" />
+  <table id="listsearches" cellspacing="0" class="searchbar searchlist absolute">
+  </table>
+</div>
+
+<script type="text/javascript">
+	<%= "//" %><%= cdata_section("
+		new Searchbar('searchbar', 'listsearches');
+	//") %>
+</script>

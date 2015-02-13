@@ -1,0 +1,72 @@
+<%= stylesheet_link_tag "tags.css" %>
+<%# header with name of user %>
+
+<p class ="center bold generalfont">
+	<%= @curr_user[:first_name] %> 
+	<%= @curr_user[:last_name] %>'s Photos
+</p>
+
+<%# Table of div rows that contain a picture on the left and all 
+    of the comments associated with it on the right %>
+
+<script type="text/javascript" src="<%=javascript_path("tagger.js")%>" ></script>
+
+<% @photos_and_comments.each do |photo_and_comments| %>
+	<div class="liketable">
+		<div id="photo<%= photo_and_comments[:photo][:id] %>" class="rightsep float relative">
+			<%# Associated photo %>
+			<%= image_tag(photo_and_comments[:photo][:file_name], :id => photo_and_comments[:photo][:file_name]) %>
+			<% photo_and_comments[:photo].tags.each do|tag| %>
+				<div id="tag<%= tag[:id] %>" class="absolute zero tag">
+				</div>
+				<script type="text/javascript">
+				<%= "//" %><%= cdata_section("
+				var temp = new Tag('photo" + photo_and_comments[:photo][:id].to_s + "',
+						   'tag" + tag[:id].to_s + "',
+						   " + tag[:tag_x].to_s + ",
+						   " + tag[:tag_y].to_s + ",
+						   " + tag[:size_x].to_s + ",
+						   " + tag[:size_y].to_s + ", null);
+				temp.first_name = '" + tag.user[:first_name] + "'; 
+				temp.last_name = '" + tag.user[:last_name] + "';
+							     //") %>
+			</script>
+			<% end %>
+			<p>Photo <%= photo_and_comments[:photo][:file_name] %> uploaded on <%=  photo_and_comments[:photo][:date_time].getlocal %><br />
+			<%= link_to "Tag this photo", new_photo_tag_path(photo_and_comments[:photo][:id]) %></p>
+		</div>
+		<div class="float relative generalcomment">
+			<div class="bold">Comments:<br /><br /></div>
+			<div class="comment">
+			<% if photo_and_comments[:comments].size == 0 then %>
+				<%# if no comments for certain photo, prompt viewer to write one %>
+				<%= link_to "Be the first to write a comment!",
+			                    new_photo_comment_path(photo_and_comments[:photo][:id]),
+				            :class => "nocomment" %>
+			<% else %>	
+				<% photo_and_comments[:comments].each do |comment| %>
+					<%# Comment text %>
+					<%= comment[:comment] %><br />
+					<div class="commentsub">
+						<%# Description of comment %>
+						Posted by <a href=<%= comment[:user_id] %>>
+						<%= @usr_names[comment[:user_id].to_i - 1][:first_name] %>
+						<%= @usr_names[comment[:user_id].to_i - 1][:last_name] %></a>
+						on <%= comment[:date_time].getlocal %><br /><br />
+					</div>
+				<% end %>
+				<%# Can write more comments %>
+				<%= link_to "Enter a new comment!",
+			                    new_photo_comment_path(photo_and_comments[:photo][:id]),
+					    :class => "nocomment" %>
+			<% end %>
+			</div>
+			<div><br />
+			</div>
+		</div>
+	</div>
+<% end %>
+<% if session[:user_id] then %>
+	<div class="center relative"><%= button_to("Upload a Photo", new_photo_path, :method => "get", :class => "bigbutton") %></div>
+<% end %>
+<%= link_to "Back to Index", users_path %>

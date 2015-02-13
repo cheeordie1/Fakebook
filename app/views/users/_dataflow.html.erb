@@ -1,0 +1,14 @@
+<%# creates a box header that contains a special animation and text part that
+    plays a special audio file when clicked. Both are easily changed%>
+
+<table class="fit">
+  <tr>
+  <td class="center">
+	  <%= audio_tag("https://github.com/cheeordie1/Music/raw/master/Water%20Wall.mp3", id: "audiolink", onmouseup: "toggleplay()", loop: "true", preload: "auto") %>  
+    <div class="overlay title" onmouseup="toggleplay()" >      
+      <%= title %>
+    </div>
+    <%= video_tag("https://github.com/cheeordie1/Data-Flow-Animation/raw/692e02239dfa8722b662a7644bc4f988d7a20121/Data%20Flow%20Animation%201.mov", :class => "resize border", :onmouseover => "play()", :onmouseout => "pause()", :loop => true) %>
+  </td>
+  </tr>
+</table>

@@ -1,0 +1,111 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.proflink{
+  background-color: #cccccc;
+  border-bottom:2px solid #000000;
+}
+
+.usrtab{
+  border: 2px solid #000000;
+  border-bottom: 0px;
+}
+
+.rightsep{
+  border-right:15px solid #ffffff;
+}
+
+.liketable{
+  display:table;
+  border-bottom:40px solid #ffffff;
+}
+
+.generalcomment{
+  font-size: 18px;
+  margin-right:-100%;
+  width:1200px;
+}
+
+.comment{
+  font-size: 16px;
+  color:#333333;
+}
+
+.commentsub{
+  font-size: 13px;
+  color:#777777;
+}
+
+.nocomment{
+  font-size:22px;
+  color:#991111;
+}
+
+.float{
+  float:left;
+}
+
+.loginbar{
+  background-color:#a9c9ff;
+  background-size:10px 10px;
+  font: 14px arial, sans-serif;
+  white-space:nowrap;
+}
+
+.bigbutton{
+  width:200px;
+  height: 75px;
+}
+
+.leftoff{
+  padding-left:8px;
+}
+
+.fix{
+  margin-bottom:-10px;
+}
+
+.absolute{
+  position:absolute;
+}
+
+.loginform{
+  left: 35%
+}
+
+.searchbar{
+  width:400px;
+}
+
+.searchlist{
+  background-color:#808080;
+  left:50%;
+  margin-left:-200px;
+}
+
+.searchlistrow{
+  border:1px solid white;
+  text-align:left; 
+  padding-left:10px;
+  padding-top:8px;
+  padding-bottom:8px;
+  font:18px solid Tacoma;
+}
+
+.link{
+  bottom:30%;
+  left:25%;
+  color:white;
+  text-decoration:none;
+}
+
+.thumbnail{
+  display:block;
+  height:50px;
+  width: 50px;
+}
+
+.highlighted{
+  border:2px solid #097bdf;
+}

@@ -1,0 +1,24 @@
+<%# header %>
+
+<p class = "wide generalfont center bold">
+Database Users
+</p>
+
+<%= render(:partial => "users/search_bar")  %>
+
+<%# basic table of all of the database users %>
+
+<div>
+<br />
+<table class = "wide usrtab generalfont" cellspacing="0">
+  <% @usr_names.each do |user| %>
+    <tr>
+      <td class="proflink fit">
+	<a href="<%= user_path(user[:id]) %>" >
+	  <%= user[:last_name] %>, <%= user[:first_name] %>
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>

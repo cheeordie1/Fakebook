@@ -1,0 +1,11 @@
+<% if session[:user_id]  then%>
+	<div class="wide generalfont bold center">Comment on the photo below<br /></div>
+	<p class="center">
+		<%= image_tag(Photo.find_by(id: params[:photo_id])[:file_name]) %>
+		<%= render "commentform" %>		
+	</p>
+<% else %>
+	<div class="wide generalfont bold center error">Oops! You need to login in order to comment on a photo.</div>
+<% end %>
+<br />
+<%= link_to "Back to Index", users_path %>

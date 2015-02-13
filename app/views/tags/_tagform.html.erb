@@ -1,0 +1,36 @@
+<%= form_for([:photo, @tag], {:method => "post"}) do |f| %>
+  <div><br /></div>	
+  <div id="tagimg" class="contain relative centerimg">
+    <%= image_tag(Photo.find_by(id: params[:photo_id])[:file_name], :class => "fitdiv") %>
+    <div id="tag" class="absolute zero" >
+	    <%= f.select("user_id", User.all.collect {|user|[user.first_name + " " + user.last_name, user.id]}, {}, {:class => "hide"}) %>
+    </div>
+  </div>
+  <div><br /></div>
+  <div>
+    <%= hidden_field_tag(:tag_x, '',:id => "tag_x") %>
+    <%= hidden_field_tag(:tag_y, '', :id => "tag_y") %>
+    <%= hidden_field_tag(:size_x, '', :id => "width") %>
+    <%= hidden_field_tag(:size_y, '', :id => "height") %>
+  </div>
+  <script type="text/javascript" src="<%=javascript_path("tagger.js")%>" ></script>
+  <script type="text/javascript">
+  //<![CDATA[
+      new Tagger("tagimg", "tag", "tag_x", "tag_y", "width", "height","tag_user_id");
+  //]]>
+  </script>
+  <div class="center relative">
+    <%= f.submit() %>
+  </div>
+  <% if @tag.errors.any? %>
+    <div class="error" id="error_explanation">
+      <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this
+      photo from being uploaded:</h2>
+      <ul>
+      <% @tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

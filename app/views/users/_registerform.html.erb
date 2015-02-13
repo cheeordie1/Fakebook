@@ -1,0 +1,42 @@
+<%= form_for(@user, {:method => "post"}) do |f| %>
+<div class="loginform relative comment">
+	<div>
+	First Name: <%= text_field_tag(:first_name) %> 
+	</div>
+	<div>
+	Last Name: <%= text_field_tag(:last_name) %> 
+	</div>
+	<div>
+	Username: <%= text_field_tag(:login) %> 
+		<% if flash[:lognotice] != nil then %>
+			<span class=error>(<%= flash[:lognotice] %>)</span>
+		<% end %>
+	</div>
+	<div>
+	Username: <%= text_field_tag(:logcheck) %> (same as above)
+	</div>
+	<div>
+	Password: <%= password_field_tag(:password) %>
+		<% if flash[:passnotice] != nil then %>
+			<span class=error>(<%= flash[:passnotice] %>)</span>
+		<% end %>
+	</div>
+	<div>
+	Password: <%= password_field_tag(:passcheck) %> (same as above)
+        </div>
+	<div>
+	<%= submit_tag("Register") %>
+        </div>
+</div>
+<% end %>
+<% if @user.errors.any? then %>
+  <div class="error" id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this
+    comment from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

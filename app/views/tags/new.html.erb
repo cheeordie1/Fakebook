@@ -1,0 +1,8 @@
+<% if session[:user_id]  then%>
+	<div class="wide generalfont bold center">Click and Drag to Tag this Photo<br /></div>
+	<%= render "tagform" %>
+<% else %>
+	<div class="wide generalfont bold center error">Oops! You need to login in order to tag a photo.</div>
+<% end %>
+<br />
+<%= link_to "Back to Index", users_path %>

@@ -1,0 +1,31 @@
+// Place all the styles related to the Tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tag{
+  border:2px solid white;
+}
+
+.zero{
+  top:0;
+}
+
+.centerimg{
+  margin-left:auto;
+  margin-right:auto;
+  display:table;
+}
+
+.select{
+  width:100%;
+  bottom:0;
+  visibility:visible;
+}
+
+.hide{
+  visibility:hidden;
+}
+
+.fitdiv{
+  vertical-align:top;
+}

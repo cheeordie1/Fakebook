@@ -1,0 +1,10 @@
+<% if session[:user_id]  then%>
+	<div class="wide generalfont bold center">Upload a new photo<br /></div>
+	<p class="center">
+		<%= render "photoform" %>		
+	</p>
+<% else %>
+	<div class="wide generalfont bold center error">Oops! You need to login in order to upload your own photo.</div>
+<% end %>
+<br />
+<%= link_to "Back to Index", users_path %>

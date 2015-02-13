@@ -1,0 +1,27 @@
+.center{
+  text-align:center;
+}
+
+.overlay{
+  position:absolute;
+  top:8%;
+  left:30%;
+}
+
+.title{
+  font:290% bold "Lucida Console", serif;
+  text-shadow:2px 2px #00d000;
+  color:#eeeeee;
+}
+
+.resize{
+  height:70%;
+}
+
+.fit{
+  width:100%;
+}
+
+.border{
+  border: 15px ridge #423f3d;
+}

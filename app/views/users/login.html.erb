@@ -1,0 +1,20 @@
+<p class="center generalfont bold">
+	Please Enter your Username and Password
+</p>
+<%= form_tag(post_login_users_path, :method => "post", :class=> "loginform") do %>
+	</div>
+	Username: <%= text_field_tag(:login) %> 
+		<% if flash[:lognotice] != nil then %>
+			<span class=error>(<%= flash[:lognotice] %>)</span>
+		<% end %>
+	</div>
+	<div>
+	Password: <%= password_field_tag(:password) %>
+		<% if flash[:passnotice] != nil then %>
+			<span class=error>(<%= flash[:passnotice] %>)</span>
+		<% end %>
+	</div>
+	<%= submit_tag("Login") %>
+<% end %>
+<div><br /></div>
+<%= link_to "Back to Index", users_path %>
